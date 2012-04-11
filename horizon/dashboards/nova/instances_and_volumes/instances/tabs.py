@@ -60,9 +60,9 @@ class VNCTab(tabs.Tab):
         instance = self.tab_group.kwargs['instance']
         try:
             console = api.nova.server_vnc_console(request, instance.id)
-            vnc_url = "%s&title=%s(%s)" % (console.url,
-                                           getattr(instance, "name", ""),
-                                           instance.id)
+            vnc_url = "%s&encrypt=1&title=%s(%s)" % (console.url,
+                                                     getattr(instance, "name", ""),
+                                                     instance.id)
         except:
             vnc_url = None
             exceptions.handle(request,
